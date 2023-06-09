@@ -128,3 +128,17 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# folder
+local.http
+.idea
+
+# sam
+sam/.aws-sam
+sam/logfile.txt
+sam/samconfig.toml
+
+# sls
+sls/.serverless
+
+# cdk
