@@ -131,7 +131,7 @@ dist
 
 # folder
 local.http
-.idea
+.idea/
 
 # sam
 sam/.aws-sam
