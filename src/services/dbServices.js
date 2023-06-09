@@ -1,9 +1,9 @@
-const dynamoClient= require('../clients/dbClient.js');
+const dynamoClient = require('../clients/dbClient.js');
 require('dotenv').config();
 
-const { ScanCommand, BatchWriteItemCommand } = require("@aws-sdk/client-dynamodb");
-const { marshall, unmarshall } = require("@aws-sdk/util-dynamodb");
-const { PutCommand, GetCommand  } = require("@aws-sdk/lib-dynamodb");
+const {ScanCommand, BatchWriteItemCommand} = require("@aws-sdk/client-dynamodb");
+const {marshall, unmarshall} = require("@aws-sdk/util-dynamodb");
+const {PutCommand, GetCommand} = require("@aws-sdk/lib-dynamodb");
 
 const crypto = require('crypto');
 
@@ -11,7 +11,7 @@ const createBodyResponse = async (body) => {
     const ddbDocClient = dynamoClient.getDBDocumentClient();
 
     const bodyRespnose = {
-        id : crypto.randomUUID(),
+        id: crypto.randomUUID(),
         body: body
     };
 
@@ -31,7 +31,7 @@ const createBodyResponse = async (body) => {
     return bodyRespnose.id;
 }
 
-const getBodyResponse = async (id)=>{
+const getBodyResponse = async (id) => {
     const ddbDocClient = dynamoClient.getDBDocumentClient();
 
     const params = {
@@ -44,7 +44,9 @@ const getBodyResponse = async (id)=>{
     try {
         const data = await ddbDocClient.send(new GetCommand(params));
         //console.log("Success : user found", data.Item);
-        if(data.Item) { return data.Item};
+        if (data.Item) {
+            return data.Item
+        };
 
     } catch (err) {
         console.log("Error", err);
